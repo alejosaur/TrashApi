@@ -11,12 +11,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:5000/api/v1/trash",
-					"protocol": "http",
+					"raw": "https://trashapi.herokuapp.com/api/v1/trash",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"trashapi",
+						"herokuapp",
+						"com"
 					],
-					"port": "5000",
 					"path": [
 						"api",
 						"v1",
@@ -32,12 +33,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:5000/api/v1/trash/23?date=2019-11-9",
-					"protocol": "http",
+					"raw": "https://trashapi.herokuapp.com/api/v1/trash/23?date=2019-11-11",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"trashapi",
+						"herokuapp",
+						"com"
 					],
-					"port": "5000",
 					"path": [
 						"api",
 						"v1",
@@ -47,7 +49,7 @@
 					"query": [
 						{
 							"key": "date",
-							"value": "2019-11-9"
+							"value": "2019-11-11"
 						}
 					]
 				}
@@ -82,12 +84,13 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:5000/api/v1/trash",
-					"protocol": "http",
+					"raw": "https://trashapi.herokuapp.com/api/v1/trash",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"trashapi",
+						"herokuapp",
+						"com"
 					],
-					"port": "5000",
 					"path": [
 						"api",
 						"v1",
