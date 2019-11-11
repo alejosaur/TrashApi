@@ -80,7 +80,7 @@ app.post('/api/v1/trash', (req, res) => {
     console.log(err);
   });
 
-  var images_file = fs.createReadStream('images/'+filename+'.png');
+  var images_file = fs.createReadStream(filename+'.png');
   
   var params = {
     images_file: images_file,
