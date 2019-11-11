@@ -153,9 +153,7 @@ app.post('/api/v1/trash', (req, res) => {
 
 });
 
-app.listen(PORT, () => {
-  console.log(`server running on port ${PORT}`)
-});
+app.listen(process.env.PORT || 5000)
 
 function makeid(length) {
   var result           = '';
