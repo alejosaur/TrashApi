@@ -1,0 +1,3 @@
+Para correr la API, ejecutar el comando "npm run start", es probable que sea necesario previamente instalar algunos paquetes mediante el comando "npm install"
+
+El archivo TrashApi.postman_collection.json es la colección de JSON correspondiente a esta api, tiene dos operaciones de consulta y una de clasificación (a la cual se envía un base 64 de la imagen a clasificar).
