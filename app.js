@@ -76,7 +76,7 @@ app.post('/api/v1/trash', (req, res) => {
     }
   });
 
-  fs.writeFileSync("images/"+filename+".png", req.body.base64, 'base64', function(err) {
+  fs.writeFileSync(filename+".png", req.body.base64, 'base64', function(err) {
     console.log(err);
   });
 
@@ -97,7 +97,7 @@ app.post('/api/v1/trash', (req, res) => {
       console.log(JSON.stringify(response.images[0].classifiers[0].classes[0].class, null, 2))
       type = response.images[0].classifiers[0].classes[0].class;  
       
-      fs.unlink("images/"+filename+".png", (err) => {
+      fs.unlink(filename+".png", (err) => {
         if (err) {
           console.error(err)
           return
