@@ -8,7 +8,7 @@ var fs = require('fs');
 var VisualRecognitionV3 = require('watson-developer-cloud/visual-recognition/v3');
 
 const classifier_ids = ["DefaultCustomModel_1909949655"];
-const threshold = 0.6;
+const threshold = 0.2;
 
 var visualRecognition = new VisualRecognitionV3({
 	version: '2018-03-19',
@@ -76,11 +76,11 @@ app.post('/api/v1/trash', (req, res) => {
     }
   });
 
-  fs.writeFileSync(filename+".png", req.body.base64, 'base64', function(err) {
+  fs.writeFileSync(filename+".jpg", req.body.base64, 'base64', function(err) {
     console.log(err);
   });
 
-  var images_file = fs.createReadStream(filename+'.png');
+  var images_file = fs.createReadStream(filename+'.jpg');
   
   var params = {
     images_file: images_file,
@@ -91,13 +91,14 @@ app.post('/api/v1/trash', (req, res) => {
   let type;
   visualRecognition.classify(params, function(err, response) {
     if (err) { 
+      console.log(images_file);
       console.log(err);
       return res.status(500).send(err);
     } else {
       console.log(JSON.stringify(response.images[0].classifiers[0].classes[0].class, null, 2))
       type = response.images[0].classifiers[0].classes[0].class;  
       
-      fs.unlink(filename+".png", (err) => {
+      fs.unlink(filename+".jpg", (err) => {
         if (err) {
           console.error(err)
           return
@@ -106,6 +107,7 @@ app.post('/api/v1/trash', (req, res) => {
 
       //If not exists, creates the entry
       if(!trashFound){
+        console.log(images_file);
         const trash = {
           id: db.length + 1,
           point: req.body.point,
@@ -127,6 +129,7 @@ app.post('/api/v1/trash', (req, res) => {
       }
       //if already exists, updates the entry
       else{
+        console.log(images_file);
         const updatedTrash = {
           id: trashFound.id,
           point: req.body.point,
