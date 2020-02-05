@@ -144,6 +144,27 @@ app.post('/api/v1/trash', (req, res) => {
 
         db.splice(itemIndex, 1, updatedTrash);
 
+        switch (type) {
+          case "cardboard":
+            type = "cartón - gris"
+            break;
+          case "glass":
+            type = "vidrio - azul"
+            break;
+          case "metal":
+            type = "metal - amarillo"
+            break;
+          case "paper":
+            type = "papel - gris"
+            break;
+          case "plastic":
+            type = "plástico - azul"
+            break;
+          case "trash":
+            type = "ordinario - verde"
+            break;
+        }
+
         return res.status(200).send({
           success: 'true',
           message: 'trash added successfully',
