@@ -115,7 +115,7 @@ app.post('/api/v1/trash', (req, res) => {
           tipo = "vidrio - azul"
           break;
         case "metal":
-          tipo = "metal - amarillo"
+          tipo = "metal - azul"
           break;
         case "paper":
           tipo = "papel - gris"
