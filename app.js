@@ -104,6 +104,29 @@ app.post('/api/v1/trash', (req, res) => {
           return
         }
       });
+  
+      var tipo = ""
+
+      switch (type) {
+        case "cardboard":
+          tipo = "cartón - gris"
+          break;
+        case "glass":
+          tipo = "vidrio - azul"
+          break;
+        case "metal":
+          tipo = "metal - amarillo"
+          break;
+        case "paper":
+          tipo = "papel - gris"
+          break;
+        case "plastic":
+          tipo = "plástico - azul"
+          break;
+        case "trash":
+          tipo = "ordinario - verde"
+          break;
+      }
 
       //If not exists, creates the entry
       if(!trashFound){
@@ -123,7 +146,7 @@ app.post('/api/v1/trash', (req, res) => {
         return res.status(201).send({
           success: 'true',
           message: 'trash added successfully',
-          type: type,
+          type: tipo,
           score: response.images[0].classifiers[0].classes[0].score
         })
       }
@@ -144,31 +167,10 @@ app.post('/api/v1/trash', (req, res) => {
 
         db.splice(itemIndex, 1, updatedTrash);
 
-        switch (type) {
-          case "cardboard":
-            type = "cartón - gris"
-            break;
-          case "glass":
-            type = "vidrio - azul"
-            break;
-          case "metal":
-            type = "metal - amarillo"
-            break;
-          case "paper":
-            type = "papel - gris"
-            break;
-          case "plastic":
-            type = "plástico - azul"
-            break;
-          case "trash":
-            type = "ordinario - verde"
-            break;
-        }
-
         return res.status(200).send({
-          success: 'true',
+          success: 'trued',
           message: 'trash added successfully',
-          type: type,
+          type: tipo,
           score: response.images[0].classifiers[0].classes[0].score
         });
       }
